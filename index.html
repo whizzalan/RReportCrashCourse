@@ -128,10 +128,18 @@ img {
 <span class="kw">getwd</span>()</code></pre></div>
 <pre><code>## [1] &quot;/home/gg/works/R_Courses/RReportCrashCourse&quot;</code></pre>
 <ul>
-<li><h3 id="load-data">Load Data</h3></li>
+<li><h3 id="load-data-setting-env">Load Data &amp; Setting Env</h3></li>
+<li><h3 id="-shell-">1. 打開 <code>shell</code> 輸入指令下載資料集</h3></li>
+<li><p><code>git clone https://github.com/whizzalan/RReportCrashCourse.git</code></p></li>
+<li><h3 id="-rstudio-console-">2. 在 RStudio console 輸入指令，切換工作目錄並確認下載內容。</h3></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### url 改成github ???
-url &lt;-<span class="st"> &quot;https://dl.dropboxusercontent.com/u/68133220/data/datasets.rda&quot;</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;RReportCrashCourse&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir</span>()</code></pre></div>
+<pre><code>## [1] &quot;data&quot;              &quot;img&quot;               &quot;index_cache&quot;      
+## [4] &quot;index_files&quot;       &quot;index.html&quot;        &quot;index.Rmd&quot;        
+## [7] &quot;installPackages.R&quot; &quot;main.css&quot;          &quot;README.md&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">### 如果沒辦法讀到資料的直接執行看看下面程式馬
+url &lt;-<span class="st"> &quot;https://github.com/whizzalan/RReportCrashCourse/raw/gh-pages/data/datasets.rda&quot;</span>
 <span class="kw">download.file</span>(url,<span class="kw">paste0</span>(<span class="kw">getwd</span>(),<span class="st">&quot;/data/datasets.rda&quot;</span>))
 <span class="kw">load</span>(<span class="st">&quot;data/datasets.rda&quot;</span>)
 <span class="co"># 列出R環境中有的物件</span>
@@ -214,7 +222,7 @@ url &lt;-<span class="st"> &quot;https://dl.dropboxusercontent.com/u/68133220/da
 <pre><code>##   mean(x)    sd(x)  mean(y)    sd(y) cor(x, y)
 ## 1       9 3.198837 7.500682 1.958925 0.8163662</code></pre>
 <div id="hint" class="section level3">
-<h3>HINT</h3>
+<h3><a href="https://suensummit.github.io/RCourseBankSinoPac/week2handouts.html">HINT</a></h3>
 <ul>
 <li>第二週 Example 5: group_by + summarise</li>
 </ul>

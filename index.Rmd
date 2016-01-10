@@ -45,10 +45,23 @@ library(datasets);library(dplyr);library(ggplot2);library(devtools);library(resh
 getwd()
 ```
 
-- ### Load Data
+- ### Load Data & Setting Env
+
+- ### 1. 打開 `shell` 輸入指令下載資料集
+
+  + `git clone https://github.com/whizzalan/RReportCrashCourse.git`
+
+- ### 2. 在 RStudio console 輸入指令，切換工作目錄並確認下載內容。
+
+```{r, eval=FALSE}
+setwd("RReportCrashCourse")
+```
+```{r}
+dir()
+```
 ```{r eval=FALSE}
-### url 改成github ???
-url <- "https://dl.dropboxusercontent.com/u/68133220/data/datasets.rda"
+### 如果沒辦法讀到資料的直接執行看看下面程式馬
+url <- "https://github.com/whizzalan/RReportCrashCourse/raw/gh-pages/data/datasets.rda"
 download.file(url,paste0(getwd(),"/data/datasets.rda"))
 load("data/datasets.rda")
 # 列出R環境中有的物件
@@ -88,7 +101,7 @@ quartet %>%
   summarize(mean(x),sd(x),mean(y),sd(y),cor(x,y))
 ```
 
-### HINT
+### [HINT](https://suensummit.github.io/RCourseBankSinoPac/week2handouts.html)
 - 第二週 Example 5: group_by + summarise
 
 ```{r}
