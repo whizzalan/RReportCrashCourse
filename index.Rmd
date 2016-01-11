@@ -9,7 +9,7 @@ author:
 date: "January 13, 2016"
 output: 
   html_document:
-  self_contained: no 
+    self_contained: no 
     toc: true
     toc_depth: 1
     theme: readable
@@ -64,7 +64,8 @@ dir()
 ### 如果沒辦法讀到資料的直接執行看看下面程式馬
 url <- "https://github.com/whizzalan/RReportCrashCourse/raw/gh-pages/data/datasets.rda"
 download.file(url,paste0(getwd(),"/data/datasets.rda"))
-load("data/datasets.rda")
+if(.Platform$OS.type != "unix") load("data/datasets_big5.rda") else load("data/datasets.rda")
+
 # 列出R環境中有的物件
 # datasets::anscombe, Cl_info, creditData
 ls()
