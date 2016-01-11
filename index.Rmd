@@ -205,9 +205,9 @@ page(credit)
 
 ```{r data, cache = TRUE}
 # dplyr::mutate is fast !!!
-credit <- credit %>% mutate(
-  月份 = as.numeric(月份)
-)
+# credit <- credit %>% mutate(
+#   月份 = as.numeric(月份)
+# )
 # 試畫看看，我發現惹什麼問題？
 credit %>% ggplot(aes(x=月份,y=流通卡數)) + geom_line(aes(group=金融機構名稱))
 ```
@@ -268,11 +268,14 @@ try3 <- credit %>% select(金融機構名稱, 月份, 流通卡數, 有效卡數
 # 挑選出,之前比較的那幾家銀行
 try4 <- try3 %>% filter(金融機構名稱 %in% try2$金融機構名稱)
 
+
+try3 <- try3 %>% mutate(月份=factor(月份,levels=sort(unique(月份))))
+class(try3$月份)
 # 現行主流畫法
-p <- ggplot(try3,aes(x=月份,y=流通卡數,color=金融機構名稱)) +
-  geom_line()
+p <- ggplot(try3,aes(x=月份,y=流通卡數,color=金融機構名稱, group = 金融機構名稱)) +
+  geom_line() 
 p
-p <- ggplot(try4,aes(x=月份,y=流通卡數,color=金融機構名稱)) +
+p <- ggplot(try4,aes(x=月份,y=流通卡數,color=金融機構名稱,group = 金融機構名稱)) +
   geom_line()
 p
 # 潮流畫法（簡單板，某些可以！）
