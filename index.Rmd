@@ -26,6 +26,7 @@ library(reshape2)
 library(rmarkdown)
 library(knitr)
 library(plotly)
+library(magrittr)
 ```
 
 # 0 關於教材授權
@@ -42,7 +43,7 @@ library(plotly)
 - ### Fist Thing check your environment
 
 ```{r}
-library(datasets);library(dplyr);library(ggplot2);library(devtools);library(reshape2)
+library(datasets);library(dplyr);library(ggplot2);library(devtools);library(reshape2);library(plotly)
 getwd()
 ```
 
@@ -50,30 +51,40 @@ getwd()
 
 - ### 1. 打開 `shell` 輸入指令下載資料集
 
+  +  Windows 用戶在左下角按右鍵 ![](img/Windows_cmd.png)
+
   + `git clone https://github.com/whizzalan/RReportCrashCourse.git`
 
 - ### 2. 在 RStudio console 輸入指令，切換工作目錄並確認下載內容。
 
 ```{r, eval=FALSE}
 setwd("RReportCrashCourse")
+getwd()
 ```
 ```{r}
 dir()
 ```
 ```{r eval=FALSE}
-### 如果沒辦法讀到資料的直接執行看看下面程式馬
-url <- "https://github.com/whizzalan/RReportCrashCourse/raw/gh-pages/data/datasets.rda"
-download.file(url,paste0(getwd(),"/data/datasets.rda"))
 if(.Platform$OS.type != "unix") load("data/datasets_big5.rda") else load("data/datasets.rda")
-
+### 如果沒辦法讀到資料的直接執行看看下面程式馬
+if(.Platform$OS.type != "unix"){
+  url <- "https://github.com/whizzalan/RReportCrashCourse/raw/gh-pages/data/datasets_big5.rda"
+  download.file(url,paste0(getwd(),"/data/datasets_big5.rda"))
+  load("data/datasets_big5.rda")
+}  else {
+  url <- "https://github.com/whizzalan/RReportCrashCourse/raw/gh-pages/data/datasets.rda"
+  download.file(url,paste0(getwd(),"/data/datasets.rda"))
+  load("data/datasets.rda")
+}
 # 列出R環境中有的物件
 # datasets::anscombe, Cl_info, creditData
 ls()
 ```
 ```{r,echo=FALSE}
 #講師自己背後讀
-# save(Cl_info,quartet,creditData,file = "data/datasets.rda")
-load("data/datasets.rda")
+# save(Cl_info,quartet,creditData,credit,file = "data/datasets.rda")
+# save(Cl_info,quartet,creditData,credit,file = "data/datasets_big5.rda")
+if(.Platform$OS.type != "unix") load("data/datasets_big5.rda") else load("data/datasets.rda")
 ls()
 ```
 
@@ -103,7 +114,7 @@ quartet %>%
   summarize(mean(x),sd(x),mean(y),sd(y),cor(x,y))
 ```
 
-### [HINT](https://suensummit.github.io/RCourseBankSinoPac/week2handouts.html)
+### [HINT 可以點點看](https://suensummit.github.io/RCourseBankSinoPac/week2handouts.html)
 - 回顧第二週ETL所學的 Example 5: group_by + summarise
 
 ```{r}
@@ -176,6 +187,9 @@ names(creditData)
 head(creditData,5)
 tail(creditData,5)
 str(creditData)
+
+summary(creditData)
+
 ```
 
 ### 2.1.1 Data Wrangling First Step: data cleaning
@@ -203,6 +217,8 @@ page(credit)
 
 ### 2.1.2 Data Wrangling Second Step: data type conversion
 
+- 試問大家，我該不該把月份改成數字??
+
 ```{r data, cache = TRUE}
 # dplyr::mutate is fast !!!
 # credit <- credit %>% mutate(
@@ -219,7 +235,7 @@ credit %>% ggplot(aes(x=月份,y=流通卡數)) + geom_line(aes(group=金融機�
 try1 <- credit %>% select(金融機構名稱, 月份, 流通卡數, 有效卡數, 當月發卡數, 當月停卡數) %>% filter(金融機構名稱 != "總計") %>% filter(月份=='10410')
 # 傳統劃法
 barplot(try1$流通卡數,names=try1$金融機構名稱,horiz=TRUE,las=1,cex.names=0.5)
-# 現行主流畫法
+# 現行主流畫法 #stat default = "count"
 p <- ggplot(try1,aes(x=金融機構名稱,y=流通卡數)) + geom_bar(stat='identity') + coord_flip()
 p
 # 潮流劃法
@@ -268,9 +284,6 @@ try3 <- credit %>% select(金融機構名稱, 月份, 流通卡數, 有效卡數
 # 挑選出,之前比較的那幾家銀行
 try4 <- try3 %>% filter(金融機構名稱 %in% try2$金融機構名稱)
 
-
-try3 <- try3 %>% mutate(月份=factor(月份,levels=sort(unique(月份))))
-class(try3$月份)
 # 現行主流畫法
 p <- ggplot(try3,aes(x=月份,y=流通卡數,color=金融機構名稱, group = 金融機構名稱)) +
   geom_line() 
@@ -280,6 +293,10 @@ p <- ggplot(try4,aes(x=月份,y=流通卡數,color=金融機構名稱,group = �
 p
 # 潮流畫法（簡單板，某些可以！）
 plot_ly(p)
+```
+
+```{r, eval=FALSE,echo=FALSE}
+### try3 <- try3 %>% mutate(月份=factor(月份,levels=sort(unique(月份))))
 ```
 
 #### [練習&HW] 畫畫看 `有效卡數` 與 `當月發卡數` 
@@ -382,7 +399,7 @@ library(plotly)
 - RStudio: "Knit" command (Ctrl+Shift+K)
 - Command line: rmarkdown::render function
 ```{r eval=FALSE, echo=TRUE}
-rmarkdown::render("input.Rmd")
+rmarkdown::render("index.Rmd")
 ```
 
 #### [練習&HW] 各種輸出
