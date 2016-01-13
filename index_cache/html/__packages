@@ -7,3 +7,15 @@ rmarkdown
 knitr
 plotly
 magrittr
+plyr
+data.table
+rbenchmark
+gdata
+XLConnectJars
+XLConnect
+pipeR
+rlist
+stringr
+formattable
+bitops
+RCurl

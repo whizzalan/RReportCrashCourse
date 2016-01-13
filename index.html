@@ -21,28 +21,46 @@
 <script src="index_files/bootstrap-3.3.1/shim/respond.min.js"></script>
 <script src="index_files/htmlwidgets-0.5/htmlwidgets.js"></script>
 <script src="index_files/plotlyjs-1.2.1/plotly-latest.min.js"></script>
-<script src="index_files/plotly-binding-2.0.16/plotly.js"></script>
+<script src="index_files/plotly-binding-2.0.19/plotly.js"></script>
 
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
+div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
 table.sourceCode { width: 100%; line-height: 100%; background-color: #2a211c; color: #bdae9d; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #2a211c; color: #bdae9d; border-right: 1px solid #bdae9d; }
 td.sourceCode { padding-left: 5px; }
 pre, code { color: #bdae9d; background-color: #2a211c; }
-code > span.kw { color: #43a8ed; font-weight: bold; }
-code > span.dt { text-decoration: underline; }
-code > span.dv { color: #44aa43; }
-code > span.bn { color: #44aa43; }
-code > span.fl { color: #44aa43; }
-code > span.ch { color: #049b0a; }
-code > span.st { color: #049b0a; }
-code > span.co { color: #0066ff; font-style: italic; }
-code > span.al { color: #ffff00; }
-code > span.fu { color: #ff9358; font-weight: bold; }
-code > span.er { font-weight: bold; }
+code > span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+code > span.dt { text-decoration: underline; } /* DataType */
+code > span.dv { color: #44aa43; } /* DecVal */
+code > span.bn { color: #44aa43; } /* BaseN */
+code > span.fl { color: #44aa43; } /* Float */
+code > span.ch { color: #049b0a; } /* Char */
+code > span.st { color: #049b0a; } /* String */
+code > span.co { color: #0066ff; font-style: italic; } /* Comment */
+code > span.al { color: #ffff00; } /* Alert */
+code > span.fu { color: #ff9358; font-weight: bold; } /* Function */
+code > span.er { color: #ffff00; font-weight: bold; } /* Error */
+code > span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #049b0a; } /* SpecialChar */
+code > span.vs { color: #049b0a; } /* VerbatimString */
+code > span.ss { color: #049b0a; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #0066ff; font-style: italic; } /* Documentation */
+code > span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
 </style>
 <style type="text/css">
   pre:not([class]) {
@@ -104,42 +122,25 @@ img {
 <div id="mini-example-to-overview-etl-viz" class="section level1">
 <h1>1 Mini example to overview ETL + Viz</h1>
 <ul>
-<li><h3>Fist Thing check your environment</h3></li>
+<li><h3 id="fist-thing-check-your-environment">Fist Thing check your environment</h3></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(datasets);<span class="kw">library</span>(dplyr);<span class="kw">library</span>(ggplot2);<span class="kw">library</span>(devtools);<span class="kw">library</span>(reshape2);<span class="kw">library</span>(plotly)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre><code>## 
-## Attaching package: &#39;plotly&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
-## 
-##     last_plot</code></pre>
-<pre><code>## The following object is masked from &#39;package:graphics&#39;:
-## 
-##     layout</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre>
-<pre><code>## [1] &quot;C:/Users/c3h3/Documents/RReportCrashCourse&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(datasets);<span class="kw">library</span>(dplyr);<span class="kw">library</span>(ggplot2);<span class="kw">library</span>(devtools);<span class="kw">library</span>(reshape2);<span class="kw">library</span>(plotly)
+<span class="kw">getwd</span>()</code></pre></div>
+<pre><code>## [1] &quot;/home/gg/works/R_Courses/RReportCrashCourse&quot;</code></pre>
 <ul>
-<li><h3>Load Data &amp; Setting Env</h3></li>
-<li><h3>1. 打開 <code>shell</code> 輸入指令下載資料集</h3></li>
-<li><p>Windows 用戶在左下角按右鍵 <img src="img/Windows_cmd.png" /></p></li>
+<li><h3 id="load-data-setting-env">Load Data &amp; Setting Env</h3></li>
+<li><h3 id="-shell-">1. 打開 <code>shell</code> 輸入指令下載資料集</h3></li>
+<li><p>Windows 用戶在左下角按右鍵 <img src="img/Windows_cmd.png" alt="" /></p></li>
 <li><p><code>git clone https://github.com/whizzalan/RReportCrashCourse.git</code></p></li>
-<li><h3>2. 在 RStudio console 輸入指令，切換工作目錄並確認下載內容。</h3></li>
+<li><h3 id="-rstudio-console-">2. 在 RStudio console 輸入指令，切換工作目錄並確認下載內容。</h3></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;RReportCrashCourse&quot;</span>)
-<span class="kw">getwd</span>()</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir</span>()</code></pre>
-<pre><code>##  [1] &quot;data&quot;                &quot;img&quot;                 &quot;index.Rmd&quot;          
-##  [4] &quot;index_cache&quot;         &quot;index_files&quot;         &quot;index_windows.html&quot; 
-##  [7] &quot;index_windows.Rmd&quot;   &quot;index_windows_cache&quot; &quot;index_windows_files&quot;
-## [10] &quot;installPackages.R&quot;   &quot;main.css&quot;            &quot;README.md&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">if(.Platform$OS.type !=<span class="st"> &quot;unix&quot;</span>) <span class="kw">load</span>(<span class="st">&quot;data/datasets_big5.rda&quot;</span>) else <span class="kw">load</span>(<span class="st">&quot;data/datasets.rda&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;RReportCrashCourse&quot;</span>)
+<span class="kw">getwd</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dir</span>()</code></pre></div>
+<pre><code>## [1] &quot;data&quot;              &quot;img&quot;               &quot;index_cache&quot;      
+## [4] &quot;index_files&quot;       &quot;index.html&quot;        &quot;index.Rmd&quot;        
+## [7] &quot;installPackages.R&quot; &quot;main.css&quot;          &quot;README.md&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">if(.Platform$OS.type !=<span class="st"> &quot;unix&quot;</span>) <span class="kw">load</span>(<span class="st">&quot;data/datasets_big5.rda&quot;</span>) else <span class="kw">load</span>(<span class="st">&quot;data/datasets.rda&quot;</span>)
 ### 如果沒辦法讀到資料的直接執行看看下面程式馬
 if(.Platform$OS.type !=<span class="st"> &quot;unix&quot;</span>){
   url &lt;-<span class="st"> &quot;https://github.com/whizzalan/RReportCrashCourse/raw/gh-pages/data/datasets_big5.rda&quot;</span>
@@ -152,14 +153,33 @@ if(.Platform$OS.type !=<span class="st"> &quot;unix&quot;</span>){
 }
 <span class="co"># 列出R環境中有的物件</span>
 <span class="co"># datasets::anscombe, Cl_info, creditData</span>
-<span class="kw">ls</span>()</code></pre>
-<pre><code>## [1] &quot;Cl_info&quot;    &quot;credit&quot;     &quot;creditData&quot; &quot;quartet&quot;</code></pre>
+<span class="kw">ls</span>()</code></pre></div>
+<pre><code>##  [1] &quot;a&quot;                   &quot;AM_Odd&quot;              &quot;ans1&quot;               
+##  [4] &quot;ans2&quot;                &quot;bankingUrl&quot;          &quot;Bet&quot;                
+##  [7] &quot;Cl_info&quot;             &quot;credit&quot;              &quot;creditData&quot;         
+## [10] &quot;d&quot;                   &quot;DF&quot;                  &quot;doc&quot;                
+## [13] &quot;doc_str&quot;             &quot;DT&quot;                  &quot;fac&quot;                
+## [16] &quot;fileName&quot;            &quot;Games&quot;               &quot;gg&quot;                 
+## [19] &quot;github_Packages&quot;     &quot;github_PackagesName&quot; &quot;grpsize&quot;            
+## [22] &quot;hist.ggplot&quot;         &quot;hist.ggvis&quot;          &quot;hist.rcharts&quot;       
+## [25] &quot;HM&quot;                  &quot;HM_Odd&quot;              &quot;html&quot;               
+## [28] &quot;i&quot;                   &quot;img.height&quot;          &quot;img.width&quot;          
+## [31] &quot;index&quot;               &quot;l2&quot;                  &quot;monthsUrl&quot;          
+## [34] &quot;monthsUrl1&quot;          &quot;monthsUrlList&quot;       &quot;mtcars&quot;             
+## [37] &quot;mtcars.mean&quot;         &quot;n&quot;                   &quot;p&quot;                  
+## [40] &quot;packages&quot;            &quot;packages_w1&quot;         &quot;packages_w2&quot;        
+## [43] &quot;packages_w3&quot;         &quot;packages_w4&quot;         &quot;py&quot;                 
+## [46] &quot;quartet&quot;             &quot;res&quot;                 &quot;resp&quot;               
+## [49] &quot;shopping_list&quot;       &quot;ss&quot;                  &quot;sss&quot;                
+## [52] &quot;t&quot;                   &quot;try1&quot;                &quot;try2&quot;               
+## [55] &quot;try3&quot;                &quot;try4&quot;                &quot;tt&quot;                 
+## [58] &quot;ttt&quot;                 &quot;WorldPhones.DF&quot;</code></pre>
 <ul>
-<li><h3>先前的數據觀察，小挑戰（Data Aggregation）</h3></li>
+<li><h3 id="data-aggregation">先前的數據觀察，小挑戰（Data Aggregation）</h3></li>
 </ul>
 <div id="anscombes-quartet-dataset" class="section level2">
 <h2>1.1 Anscombe’s quartet dataset</h2>
-<pre class="sourceCode r"><code class="sourceCode r">quartet</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">quartet</code></pre></div>
 <pre><code>##    set  x     y
 ## 1    I 10  8.04
 ## 2    I  8  6.95
@@ -208,37 +228,18 @@ if(.Platform$OS.type !=<span class="st"> &quot;unix&quot;</span>){
 <ul>
 <li><h3>試做出下列表單</h3></li>
 </ul>
-<pre><code>## Source: local data frame [4 x 6]
-## 
-##      set mean(x)    sd(x)  mean(y)    sd(y) cor(x, y)
-##   (fctr)   (dbl)    (dbl)    (dbl)    (dbl)     (dbl)
-## 1      I       9 3.316625 7.500909 2.031568 0.8164205
-## 2     II       9 3.316625 7.500909 2.031657 0.8162365
-## 3    III       9 3.316625 7.500000 2.030424 0.8162867
-## 4     IV       9 3.316625 7.500909 2.030579 0.8165214</code></pre>
+<pre><code>##   mean(x)    sd(x)  mean(y)    sd(y) cor(x, y)
+## 1       9 3.198837 7.500682 1.958925 0.8163662</code></pre>
 <div id="hint-" class="section level3">
 <h3><a href="https://suensummit.github.io/RCourseBankSinoPac/week2handouts.html">HINT 可以點點看</a></h3>
 <ul>
 <li>回顧第二週ETL所學的 Example 5: group_by + summarise</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">Cl_info %&gt;%<span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Cl_info %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">group_by</span>(bank_nm) %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(mortgage_cnt))</code></pre>
-<pre><code>## Source: local data frame [129 x 2]
-## 
-##               bank_nm mean(mortgage_cnt)
-##                 (chr)              (dbl)
-## 1        三信商業銀行           6069.959
-## 2    上海商業儲蓄銀行          32686.051
-## 3      大台北商業銀行           2791.000
-## 4        大眾商業銀行          29349.735
-## 5  大陸商中國建設銀行              0.000
-## 6      大陸商中國銀行              0.000
-## 7      大陸商交通銀行              0.000
-## 8    中國信託商業銀行         142796.224
-## 9    中國國際商業銀行          34204.714
-## 10     中國輸出入銀行              0.000
-## ..                ...                ...</code></pre>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(mortgage_cnt))</code></pre></div>
+<pre><code>##   mean(mortgage_cnt)
+## 1           22537.59</code></pre>
 <!-- end of list -->
 <hr />
 </div>
@@ -247,13 +248,13 @@ if(.Platform$OS.type !=<span class="st"> &quot;unix&quot;</span>){
 <div id="charts-with-ggplot2" class="section level1">
 <h1>1.2 Charts with ggplot2</h1>
 <ul>
-<li><h3>The importance of graphing data before analyzing</h3></li>
+<li><h3 id="the-importance-of-graphing-data-before-analyzing">The importance of graphing data before analyzing</h3></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 p =<span class="st"> </span><span class="kw">ggplot</span>(quartet, <span class="kw">aes</span>(x, y)) +<span class="st"> </span><span class="kw">geom_point</span>()
 p =<span class="st"> </span>p +<span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> <span class="ot">FALSE</span>)
 p =<span class="st"> </span>p +<span class="st"> </span><span class="kw">facet_wrap</span>(~set)
-p</code></pre>
+p</code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-10-1.png" title="" alt="" width="672" /></p>
 <div id="ggplot-usage" class="section level2">
 <h2>1.3 ggplot Usage</h2>
@@ -277,13 +278,13 @@ p</code></pre>
 <blockquote>
 <p>ggplot(data = , aes( x = , y = ), fill = , colour = ) + <br> 　　　　geom_() + <br> 　　　　theme_() + <br> 　　　　coord_() + facet_() + stat_ () + … <br></p>
 </blockquote>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># list all geom</span>
-<span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&#39;^geom_&#39;</span>, <span class="dt">env =</span> <span class="kw">as.environment</span>(<span class="st">&#39;package:ggplot2&#39;</span>))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># list all geom</span>
+<span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&#39;^geom_&#39;</span>, <span class="dt">env =</span> <span class="kw">as.environment</span>(<span class="st">&#39;package:ggplot2&#39;</span>))</code></pre></div>
 <pre><code>##  [1] &quot;geom_abline&quot;     &quot;geom_area&quot;       &quot;geom_bar&quot;       
 ##  [4] &quot;geom_bin2d&quot;      &quot;geom_blank&quot;      &quot;geom_boxplot&quot;   
 ##  [7] &quot;geom_contour&quot;    &quot;geom_count&quot;      &quot;geom_crossbar&quot;  
-## [10] &quot;geom_curve&quot;      &quot;geom_density&quot;    &quot;geom_density_2d&quot;
-## [13] &quot;geom_density2d&quot;  &quot;geom_dotplot&quot;    &quot;geom_errorbar&quot;  
+## [10] &quot;geom_curve&quot;      &quot;geom_density&quot;    &quot;geom_density2d&quot; 
+## [13] &quot;geom_density_2d&quot; &quot;geom_dotplot&quot;    &quot;geom_errorbar&quot;  
 ## [16] &quot;geom_errorbarh&quot;  &quot;geom_freqpoly&quot;   &quot;geom_hex&quot;       
 ## [19] &quot;geom_histogram&quot;  &quot;geom_hline&quot;      &quot;geom_jitter&quot;    
 ## [22] &quot;geom_label&quot;      &quot;geom_line&quot;       &quot;geom_linerange&quot; 
@@ -294,16 +295,16 @@ p</code></pre>
 ## [37] &quot;geom_smooth&quot;     &quot;geom_spoke&quot;      &quot;geom_step&quot;      
 ## [40] &quot;geom_text&quot;       &quot;geom_tile&quot;       &quot;geom_violin&quot;    
 ## [43] &quot;geom_vline&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&#39;^stat_&#39;</span>, <span class="dt">env =</span> <span class="kw">as.environment</span>(<span class="st">&#39;package:ggplot2&#39;</span>))</code></pre>
-<pre><code>##  [1] &quot;stat_bin&quot;         &quot;stat_bin_2d&quot;      &quot;stat_bin_hex&quot;    
-##  [4] &quot;stat_bin2d&quot;       &quot;stat_binhex&quot;      &quot;stat_boxplot&quot;    
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&#39;^stat_&#39;</span>, <span class="dt">env =</span> <span class="kw">as.environment</span>(<span class="st">&#39;package:ggplot2&#39;</span>))</code></pre></div>
+<pre><code>##  [1] &quot;stat_bin&quot;         &quot;stat_bin2d&quot;       &quot;stat_bin_2d&quot;     
+##  [4] &quot;stat_binhex&quot;      &quot;stat_bin_hex&quot;     &quot;stat_boxplot&quot;    
 ##  [7] &quot;stat_contour&quot;     &quot;stat_count&quot;       &quot;stat_density&quot;    
-## [10] &quot;stat_density_2d&quot;  &quot;stat_density2d&quot;   &quot;stat_ecdf&quot;       
+## [10] &quot;stat_density2d&quot;   &quot;stat_density_2d&quot;  &quot;stat_ecdf&quot;       
 ## [13] &quot;stat_ellipse&quot;     &quot;stat_function&quot;    &quot;stat_identity&quot;   
 ## [16] &quot;stat_qq&quot;          &quot;stat_quantile&quot;    &quot;stat_smooth&quot;     
 ## [19] &quot;stat_spoke&quot;       &quot;stat_sum&quot;         &quot;stat_summary&quot;    
-## [22] &quot;stat_summary_2d&quot;  &quot;stat_summary_bin&quot; &quot;stat_summary_hex&quot;
-## [25] &quot;stat_summary2d&quot;   &quot;stat_unique&quot;      &quot;stat_ydensity&quot;</code></pre>
+## [22] &quot;stat_summary2d&quot;   &quot;stat_summary_2d&quot;  &quot;stat_summary_bin&quot;
+## [25] &quot;stat_summary_hex&quot; &quot;stat_unique&quot;      &quot;stat_ydensity&quot;</code></pre>
 <!-- end of list -->
 <hr />
 </div>
@@ -313,13 +314,13 @@ p</code></pre>
 <div id="etl-recap-barchart" class="section level2">
 <h2>2.1 ETL Recap &amp; barchart</h2>
 <ul>
-<li><h3>再次複習第二週所用資料，資料來源：10308-10410信用卡重要資訊揭露</h3></li>
+<li><h3 id="10308-10410">再次複習第二週所用資料，資料來源：10308-10410信用卡重要資訊揭露</h3></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 觀看資料外觀</span>
-<span class="kw">dim</span>(creditData)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 觀看資料外觀</span>
+<span class="kw">dim</span>(creditData)</code></pre></div>
 <pre><code>## [1] 552  15</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># show 資料欄位</span>
-<span class="kw">names</span>(creditData)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># show 資料欄位</span>
+<span class="kw">names</span>(creditData)</code></pre></div>
 <pre><code>##  [1] &quot;月份&quot;                                          
 ##  [2] &quot;金融機構名稱&quot;                                  
 ##  [3] &quot;流通卡數&quot;                                      
@@ -335,8 +336,8 @@ p</code></pre>
 ## [13] &quot;備抵呆帳提足率&quot;                                
 ## [14] &quot;當月轉銷呆帳金額&quot;                              
 ## [15] &quot;當年度轉銷呆帳金額累計至資料月份&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Glance：窺一窺</span>
-<span class="kw">head</span>(creditData,<span class="dv">5</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Glance：窺一窺</span>
+<span class="kw">head</span>(creditData,<span class="dv">5</span>)</code></pre></div>
 <pre><code>##    月份     金融機構名稱 流通卡數 有效卡數 當月發卡數 當月停卡數
 ## 1 10308     臺灣土地銀行   124823    53892        799       1279
 ## 2 10308 合作金庫商業銀行   418860   230771       7347       4045
@@ -367,7 +368,7 @@ p</code></pre>
 ## 3             3987                            37556
 ## 4                0                            15984
 ## 5             1410                            10877</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(creditData,<span class="dv">5</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(creditData,<span class="dv">5</span>)</code></pre></div>
 <pre><code>##        月份               金融機構名稱 流通卡數 有效卡數 當月發卡數
 ## 548 附表4_1           中國信託商業銀行  5758500  3722803      64762
 ## 549 附表4_1   台灣美國運通國際(股)公司   161135    90036       3042
@@ -398,9 +399,9 @@ p</code></pre>
 ## 550              377                             3000
 ## 551             1884                            26931
 ## 552           390341                          3946066</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(creditData)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(creditData)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    552 obs. of  15 variables:
-##  $ 月份                                          : chr  &quot;10308&quot; &quot;10308&quot; &quot;10308&quot; &quot;10308&quot; ...
+##  $ 月份                                          : Factor w/ 15 levels &quot;10308&quot;,&quot;10309&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ 金融機構名稱                                  : chr  &quot;臺灣土地銀行&quot; &quot;合作金庫商業銀行&quot; &quot;第一商業銀行&quot; &quot;華南商業銀行&quot; ...
 ##  $ 流通卡數                                      : num  124823 418860 738718 695329 368628 ...
 ##  $ 有效卡數                                      : num  53892 230771 501452 459618 190944 ...
@@ -415,39 +416,39 @@ p</code></pre>
 ##  $ 備抵呆帳提足率                                : num  858 228 2558 1090 685 ...
 ##  $ 當月轉銷呆帳金額                              : num  1015 0 3987 0 1410 ...
 ##  $ 當年度轉銷呆帳金額累計至資料月份              : num  4855 19364 37556 15984 10877 ...</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(creditData)</code></pre>
-<pre><code>##      月份           金融機構名稱          流通卡數       
-##  Length:552         Length:552         Min.   :     129  
-##  Class :character   Class :character   1st Qu.:  162307  
-##  Mode  :character   Mode  :character   Median :  421466  
-##                                        Mean   : 2047877  
-##                                        3rd Qu.: 1499600  
-##                                        Max.   :38406475  
-##                                                          
-##     有效卡數          當月發卡數       當月停卡數      
-##  Min.   :      35   Min.   :     0   Min.   :     1.0  
-##  1st Qu.:   71249   1st Qu.:  1143   1st Qu.:   983.5  
-##  Median :  237000   Median :  6696   Median :  4586.0  
-##  Mean   : 1329235   Mean   : 23572   Mean   : 18253.7  
-##  3rd Qu.:  796750   3rd Qu.: 17154   3rd Qu.: 14790.5  
-##  Max.   :25089719   Max.   :505686   Max.   :423090.0  
-##                                                        
-##   循環信用餘額       未到期分期付款餘額  當月簽帳金額      
-##  Min.   :        0   Min.   :       0   Min.   :      263  
-##  1st Qu.:   277942   1st Qu.:   47166   1st Qu.:   423315  
-##  Median :   772161   Median :  642840   Median :  1969174  
-##  Mean   :  6005718   Mean   : 4395861   Mean   :  9860164  
-##  3rd Qu.:  4952081   3rd Qu.: 3857768   3rd Qu.:  5015854  
-##  Max.   :114419506   Max.   :89959358   Max.   :242451836  
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(creditData)</code></pre></div>
+<pre><code>##       月份     金融機構名稱          流通卡數           有效卡數       
+##  10312  : 38   Length:552         Min.   :     129   Min.   :      35  
+##  10401  : 38   Class :character   1st Qu.:  162307   1st Qu.:   71249  
+##  10402  : 37   Mode  :character   Median :  421466   Median :  237000  
+##  10403  : 37                      Mean   : 2047877   Mean   : 1329235  
+##  10404  : 37                      3rd Qu.: 1499600   3rd Qu.:  796750  
+##  10407  : 37                      Max.   :38406475   Max.   :25089719  
+##  (Other):328                                                           
+##    當月發卡數       當月停卡數        循環信用餘額      
+##  Min.   :     0   Min.   :     1.0   Min.   :        0  
+##  1st Qu.:  1143   1st Qu.:   983.5   1st Qu.:   277942  
+##  Median :  6696   Median :  4586.0   Median :   772161  
+##  Mean   : 23572   Mean   : 18253.7   Mean   :  6005718  
+##  3rd Qu.: 17154   3rd Qu.: 14790.5   3rd Qu.:  4952081  
+##  Max.   :505686   Max.   :423090.0   Max.   :114419506  
+##                                                         
+##  未到期分期付款餘額  當月簽帳金額       當月預借現金金額   
+##  Min.   :       0   Min.   :      263   Min.   :      0.0  
+##  1st Qu.:   47166   1st Qu.:   423315   1st Qu.:    731.5  
+##  Median :  642840   Median :  1969174   Median :   7416.5  
+##  Mean   : 4395861   Mean   :  9860164   Mean   : 124194.4  
+##  3rd Qu.: 3857768   3rd Qu.:  5015854   3rd Qu.:  95566.8  
+##  Max.   :89959358   Max.   :242451836   Max.   :2660477.0  
 ##                                                            
-##  當月預借現金金額    逾期三個月以上帳款占應收帳款餘額含催收款之比率
-##  Min.   :      0.0   Min.   :0.0000                                
-##  1st Qu.:    731.5   1st Qu.:0.1826                                
-##  Median :   7416.5   Median :0.2554                                
-##  Mean   : 124194.4   Mean   :0.3993                                
-##  3rd Qu.:  95566.8   3rd Qu.:0.4597                                
-##  Max.   :2660477.0   Max.   :2.5385                                
-##                                                                    
+##  逾期三個月以上帳款占應收帳款餘額含催收款之比率
+##  Min.   :0.0000                                
+##  1st Qu.:0.1826                                
+##  Median :0.2554                                
+##  Mean   :0.3993                                
+##  3rd Qu.:0.4597                                
+##  Max.   :2.5385                                
+##                                                
 ##  逾期六個月以上帳款占應收帳款餘額含催收款之比率 備抵呆帳提足率  
 ##  Min.   :0.000000                               Min.   :   0.0  
 ##  1st Qu.:0.000000                               1st Qu.: 415.7  
@@ -469,18 +470,18 @@ p</code></pre>
 <ul>
 <li>資料中月份欄位髒髒的</li>
 </ul>
-<p><img src="img/filenames.png" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 確認問題欄位</span>
-<span class="kw">unique</span>(creditData$月份)</code></pre>
-<pre><code>##  [1] &quot;10308&quot;   &quot;10309&quot;   &quot;10310&quot;   &quot;10312&quot;   &quot;10401&quot;   &quot;10402&quot;   &quot;10403&quot;  
-##  [8] &quot;10404&quot;   &quot;10406&quot;   &quot;10407&quot;   &quot;10408&quot;   &quot;10409&quot;   &quot;10410&quot;   &quot;更新_10&quot;
-## [15] &quot;附表4_1&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">credit &lt;-<span class="st"> </span>creditData
+<p><img src="img/filenames.png" alt="" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 確認問題欄位</span>
+<span class="kw">unique</span>(creditData$月份)</code></pre></div>
+<pre><code>##  [1] 10308   10309   10310   10312   10401   10402   10403   10404  
+##  [9] 10406   10407   10408   10409   10410   更新_10 附表4_1
+## 15 Levels: 10308 10309 10310 10312 10401 10402 10403 10404 10406 ... 附表4_1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">credit &lt;-<span class="st"> </span>creditData
 <span class="co"># 更改資料格式</span>
 credit$月份 &lt;-<span class="st"> </span><span class="kw">as.character</span>(credit$月份)
 credit$月份 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="dt">test =</span> credit$月份 ==<span class="st"> &quot;更新_10&quot;</span>, <span class="dt">yes =</span> <span class="st">&quot;10405&quot;</span>, <span class="dt">no =</span> credit$月份)
 credit$月份 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="dt">test =</span> credit$月份 ==<span class="st"> &quot;附表4_1&quot;</span>, <span class="dt">yes =</span> <span class="st">&quot;10311&quot;</span>, <span class="dt">no =</span> credit$月份)
-<span class="kw">unique</span>(credit$月份)</code></pre>
+<span class="kw">unique</span>(credit$月份)</code></pre></div>
 <pre><code>##  [1] &quot;10308&quot; &quot;10309&quot; &quot;10310&quot; &quot;10312&quot; &quot;10401&quot; &quot;10402&quot; &quot;10403&quot; &quot;10404&quot;
 ##  [9] &quot;10406&quot; &quot;10407&quot; &quot;10408&quot; &quot;10409&quot; &quot;10410&quot; &quot;10405&quot; &quot;10311&quot;</code></pre>
 </div>
@@ -489,36 +490,36 @@ credit$月份 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span
 <ul>
 <li>試問大家，我該不該把月份改成數字??</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr::mutate is fast !!!</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># dplyr::mutate is fast !!!</span>
 <span class="co"># credit &lt;- credit %&gt;% mutate(</span>
 <span class="co">#   月份 = as.numeric(月份)</span>
 <span class="co"># )</span>
 <span class="co"># 試畫看看，我發現惹什麼問題？</span>
-credit %&gt;%<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>月份,<span class="dt">y=</span>流通卡數)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group=</span>金融機構名稱))</code></pre>
+credit %&gt;%<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>月份,<span class="dt">y=</span>流通卡數)) +<span class="st"> </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group=</span>金融機構名稱))</code></pre></div>
 <p><img src="index_files/figure-html/data-1.png" title="" alt="" width="672" /></p>
 </div>
 <div id="data-wrangling-filter-your-data" class="section level3">
 <h3>2.1.3 Data Wrangling: filter your data</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 我只想先挑選10月的來看和幾個欄位</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 我只想先挑選10月的來看和幾個欄位</span>
 try1 &lt;-<span class="st"> </span>credit %&gt;%<span class="st"> </span><span class="kw">select</span>(金融機構名稱, 月份, 流通卡數, 有效卡數, 當月發卡數, 當月停卡數) %&gt;%<span class="st"> </span><span class="kw">filter</span>(金融機構名稱 !=<span class="st"> &quot;總計&quot;</span>) %&gt;%<span class="st"> </span><span class="kw">filter</span>(月份==<span class="st">&#39;10410&#39;</span>)
 <span class="co"># 傳統劃法</span>
-<span class="kw">barplot</span>(try1$流通卡數,<span class="dt">names=</span>try1$金融機構名稱,<span class="dt">horiz=</span><span class="ot">TRUE</span>,<span class="dt">las=</span><span class="dv">1</span>,<span class="dt">cex.names=</span><span class="fl">0.5</span>)</code></pre>
+<span class="kw">barplot</span>(try1$流通卡數,<span class="dt">names=</span>try1$金融機構名稱,<span class="dt">horiz=</span><span class="ot">TRUE</span>,<span class="dt">las=</span><span class="dv">1</span>,<span class="dt">cex.names=</span><span class="fl">0.5</span>)</code></pre></div>
 <p><img src="index_files/figure-html/filterToBarChart-1.png" title="" alt="" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 現行主流畫法 #stat default = &quot;count&quot;</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 現行主流畫法 #stat default = &quot;count&quot;</span>
 p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(try1,<span class="kw">aes</span>(<span class="dt">x=</span>金融機構名稱,<span class="dt">y=</span>流通卡數)) +<span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&#39;identity&#39;</span>) +<span class="st"> </span><span class="kw">coord_flip</span>()
-p</code></pre>
+p</code></pre></div>
 <p><img src="index_files/figure-html/filterToBarChart-2.png" title="" alt="" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 潮流劃法</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 潮流劃法</span>
 <span class="kw">library</span>(plotly)
-try1 %&gt;%<span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">x =</span> 流通卡數, <span class="dt">y =</span> 金融機構名稱, <span class="dt">type=</span><span class="st">&quot;bar&quot;</span>, <span class="dt">orientation =</span> <span class="st">&quot;h&quot;</span>)</code></pre>
+try1 %&gt;%<span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">x =</span> 流通卡數, <span class="dt">y =</span> 金融機構名稱, <span class="dt">type=</span><span class="st">&quot;bar&quot;</span>, <span class="dt">orientation =</span> <span class="st">&quot;h&quot;</span>)</code></pre></div>
 <p><div id="htmlwidget-1131" style="width:672px;height:480px;" class="plotly"></div>
-<script type="application/json" data-for="htmlwidget-1131">{"x":{"data":[{"type":"bar","inherit":true,"x":[228340,174901,395473,891340,792123,434771,365688,2275159,5071267,9086,601979,2918634,613930,332592,395830,189490,630201,10267,907443,70353,16779,1815908,1510258,412631,2169164,3907811,507823,12647,3583167,600381,189900,189731,5869043,56432,162333,93600],"y":["<e8><e7><e9><8a>銵<8c>","<e8><e7><e5><9c><e9><8a>銵<8c>","<e5><90><bd><87>澈<e5><95>平<e9><8a>銵<8c>","蝚砌<b8><e5><95>平<e9><8a>銵<8c>","<e8><e5><8d><95>平<e9><8a>銵<8c>","敶啣<8c><95>平<e9><8a>銵<8c>","銝絲<e5><95>平<e5><e8><93><8a>銵<8c>","<e5><e5><8c><af><e5><95>平<e9><8a>銵<8c>","<e5><9c>陸銝<e5><95>平<e9><8a>銵<8c>","擃<9b><8a>銵<8c>","<e5><85><b1><9c><9a><95>平<e9><8a>銵<8c>","<e8><e6><97><97>(<e5><e7>)<e5><95>平<e9><8a>銵<8c>","瞉喟<9b><9b>(<e5><e7>)<e5><95>平<e9><8a>銵<8c>","<e8><e7>銝剖<b0><bc>平<e9><8a>銵<8c>","皜<a3><e6><89><9c><9a><95>平<e9><8a>銵<8c>","<e5>銝剖<95>平<e9><8a>銵<8c>","<e5>鞊<90>(<e5><e7>)<e5><95>平<e9><8a>銵<8c>","<e8>瘜啣<95>平<e9><8a>銵<8c>","<e8><e7><e6><e5><85><95>平<e9><8a>銵<8c>","<e9>靽∪<95>平<e9><8a>銵<8c>","銝縑<e5><95>平<e9><8a>銵<8c>","<e8><e9><e5><95>平<e9><8a>銵<8c>","<e9><81><e5><9c><9a><95>平<e9><8a>銵<8c>","<e5><85>之<e5><95>平<e9><8a>銵<8c>","瘞貉<b1><95>平<e9><8a>銵<8c>","<e7><8e>控<e5><95>平<e9><8a>銵<8c>","<e5><e5><e5><95>平<e9><8a>銵<8c>","<e6><98><b1><95>(<e5><e7>)<e5><95>平<e9><8a>銵<8c>","<e5><e6><e5><9c><9a><95>平<e9><8a>銵<8c>","憭抒<e5><95>平<e9><8a>銵<8c>","<e6><e7><9b><9c><9a><95>平<e9><8a>銵<8c>","摰陸<e5><95>平<e9><8a>銵<8c>","銝剖<9c>縑閮<95>平<e9><8a>銵<8c>","<e5><e7>璅予靽∠<e5>(<e8>)<e5><e5>","<e5><e7>蝢<9c><81><9c><9a><9b>(<e8>)<e5><e5>","<e5><e7>瘞豢靽∠<e5>(<e8>)<e5><e5>"],"orientation":"h"}],"layout":{"xaxis":{"title":"瘚<e6>"},"yaxis":{"title":"<e9><87><9e><a9><a7><90>迂"},"margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"base_url":"https://plot.ly","layout.1":{"xaxis":{"title":"瘚<e6>"},"yaxis":{"title":"<e9><87><9e><a9><a7><90>迂"}},"filename":"瘚<e6> vs. <e9><87><9e><a9><a7><90>迂"},"evals":[]}</script></p>
+<script type="application/json" data-for="htmlwidget-1131">{"x":{"data":[{"type":"bar","inherit":true,"x":[228340,174901,395473,891340,792123,434771,365688,2275159,5071267,9086,601979,2918634,613930,332592,395830,189490,630201,10267,907443,70353,16779,1815908,1510258,412631,2169164,3907811,507823,12647,3583167,600381,189900,189731,5869043,56432,162333,93600],"y":["臺灣銀行","臺灣土地銀行","合作金庫商業銀行","第一商業銀行","華南商業銀行","彰化商業銀行","上海商業儲蓄銀行","台北富邦商業銀行","國泰世華商業銀行","高雄銀行","兆豐國際商業銀行","花旗(台灣)商業銀行","澳盛(台灣)商業銀行","臺灣中小企業銀行","渣打國際商業銀行","台中商業銀行","匯豐(台灣)商業銀行","華泰商業銀行","臺灣新光商業銀行","陽信商業銀行","三信商業銀行","聯邦商業銀行","遠東國際商業銀行","元大商業銀行","永豐商業銀行","玉山商業銀行","凱基商業銀行","星展(台灣)商業銀行","台新國際商業銀行","大眾商業銀行","日盛國際商業銀行","安泰商業銀行","中國信託商業銀行","台灣樂天信用卡(股)公司","台灣美國運通國際(股)公司","台灣永旺信用卡(股)公司"],"orientation":"h"}],"layout":{"xaxis":{"title":"流通卡數"},"yaxis":{"title":"金融機構名稱"},"margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"base_url":"https://plot.ly","layout.1":{"xaxis":{"title":"流通卡數"},"yaxis":{"title":"金融機構名稱"}},"filename":"流通卡數 vs. 金融機構名稱"},"evals":[]}</script></p>
 </div>
 <div id="data-wrangling-arrange-your-data" class="section level3">
 <h3>2.1.4 Data Wrangling: arrange your data</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 將資料排序畫圖</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 將資料排序畫圖</span>
 try1 &lt;-<span class="st"> </span>try1 %&gt;%<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(流通卡數))
-<span class="kw">head</span>(try1)</code></pre>
+<span class="kw">head</span>(try1)</code></pre></div>
 <pre><code>##         金融機構名稱  月份 流通卡數 有效卡數 當月發卡數 當月停卡數
 ## 1   中國信託商業銀行 10410  5869043  3826677      45828      30599
 ## 2   國泰世華商業銀行 10410  5071267  3564481      60545      85098
@@ -526,7 +527,7 @@ try1 &lt;-<span class="st"> </span>try1 %&gt;%<span class="st">  </span><span cl
 ## 4   台新國際商業銀行 10410  3583167  2431192      33148      25434
 ## 5 花旗(台灣)商業銀行 10410  2918634  2486708      18019      30029
 ## 6   台北富邦商業銀行 10410  2275159  1617158      24034      24501</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 找出永豐銀行的位置, #7</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 找出永豐銀行的位置, #7</span>
 index=<span class="kw">which</span>(try1$金融機構名稱==<span class="st">&quot;永豐商業銀行&quot;</span>)
 
 ## 由於金融機構名稱並非factor,ggplot2 group顏色吃factor
@@ -537,27 +538,27 @@ try1 &lt;-<span class="st"> </span>try1 %&gt;%<span class="st"> </span><span cla
 try2 &lt;-<span class="st"> </span>try1 %&gt;%<span class="st"> </span><span class="kw">filter</span>(<span class="kw">between</span>(<span class="kw">row_number</span>(),index<span class="dv">-3</span>,index<span class="dv">+3</span>))
 
 <span class="co"># 傳統畫法</span>
-<span class="kw">barplot</span>(try2$流通卡數,<span class="dt">names=</span>try2$金融機構名稱,<span class="dt">horiz=</span><span class="ot">TRUE</span>,<span class="dt">las=</span><span class="dv">1</span>,<span class="dt">cex.names=</span><span class="fl">0.4</span>)</code></pre>
+<span class="kw">barplot</span>(try2$流通卡數,<span class="dt">names=</span>try2$金融機構名稱,<span class="dt">horiz=</span><span class="ot">TRUE</span>,<span class="dt">las=</span><span class="dv">1</span>,<span class="dt">cex.names=</span><span class="fl">0.4</span>)</code></pre></div>
 <p><img src="index_files/figure-html/arrangeToBarChart-1.png" title="" alt="" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 現行主流畫法</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 現行主流畫法</span>
 p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(try2,<span class="kw">aes</span>(<span class="dt">x=</span>金融機構名稱,<span class="dt">y=</span>流通卡數)) +<span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&#39;identity&#39;</span>) +<span class="st"> </span><span class="kw">coord_flip</span>()
-p</code></pre>
+p</code></pre></div>
 <p><img src="index_files/figure-html/arrangeToBarChart-2.png" title="" alt="" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 潮流畫法</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 潮流畫法</span>
 <span class="kw">library</span>(plotly)
 <span class="co"># 小技巧，要調整自型</span>
 a &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">tickfont =</span> <span class="kw">list</span>(<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">size =</span> <span class="dv">7</span>))
 try2 %&gt;%<span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">x =</span> 流通卡數, <span class="dt">y =</span> 金融機構名稱, <span class="dt">type=</span><span class="st">&quot;bar&quot;</span>, <span class="dt">orientation =</span> <span class="st">&quot;h&quot;</span>) %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw">layout</span>(<span class="dt">xaxis =</span> a, <span class="dt">yaxis =</span> a)</code></pre>
+<span class="st">  </span><span class="kw">layout</span>(<span class="dt">xaxis =</span> a, <span class="dt">yaxis =</span> a)</code></pre></div>
 <p><div id="htmlwidget-3907" style="width:672px;height:480px;" class="plotly"></div>
-<script type="application/json" data-for="htmlwidget-3907">{"x":{"data":[{"type":"bar","inherit":true,"x":[3583167,2918634,2275159,2169164,1815908,1510258,907443],"y":["<e5><e6><e5><9c><9a><95>平<e9><8a>銵<8c>","<e8><e6><97><97>(<e5><e7>)<e5><95>平<e9><8a>銵<8c>","<e5><e5><8c><af><e5><95>平<e9><8a>銵<8c>","瘞貉<b1><95>平<e9><8a>銵<8c>","<e8><e9><e5><95>平<e9><8a>銵<8c>","<e9><81><e5><9c><9a><95>平<e9><8a>銵<8c>","<e8><e7><e6><e5><85><95>平<e9><8a>銵<8c>"],"orientation":"h"}],"layout":{"xaxis":{"tickfont":{"color":"blue","size":7},"title":"瘚<e6>"},"yaxis":{"tickfont":{"color":"blue","size":7},"title":"<e9><87><9e><a9><a7><90>迂"},"margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"base_url":"https://plot.ly","layout.1":{"xaxis":{"tickfont":{"color":"blue","size":7},"title":"瘚<e6>"},"yaxis":{"tickfont":{"color":"blue","size":7},"title":"<e9><87><9e><a9><a7><90>迂"}},"filename":"瘚<e6> vs. <e9><87><9e><a9><a7><90>迂"},"evals":[]}</script></p>
+<script type="application/json" data-for="htmlwidget-3907">{"x":{"data":[{"type":"bar","inherit":true,"x":[3583167,2918634,2275159,2169164,1815908,1510258,907443],"y":["台新國際商業銀行","花旗(台灣)商業銀行","台北富邦商業銀行","永豐商業銀行","聯邦商業銀行","遠東國際商業銀行","臺灣新光商業銀行"],"orientation":"h"}],"layout":{"xaxis":{"tickfont":{"color":"blue","size":7},"title":"流通卡數"},"yaxis":{"tickfont":{"color":"blue","size":7},"title":"金融機構名稱"},"margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"base_url":"https://plot.ly","layout.1":{"xaxis":{"tickfont":{"color":"blue","size":7},"title":"流通卡數"},"yaxis":{"tickfont":{"color":"blue","size":7},"title":"金融機構名稱"}},"filename":"流通卡數 vs. 金融機構名稱"},"evals":[]}</script></p>
 <!-- end of list -->
 <hr />
 </div>
 </div>
 <div id="line-plot" class="section level2">
 <h2>2.2 Line Plot</h2>
-<pre class="sourceCode r"><code class="sourceCode r">try3 &lt;-<span class="st"> </span>credit %&gt;%<span class="st"> </span><span class="kw">select</span>(金融機構名稱, 月份, 流通卡數, 有效卡數, 當月發卡數, 當月停卡數) %&gt;%<span class="st"> </span><span class="kw">mutate</span>(金融機構名稱=<span class="kw">factor</span>(金融機構名稱,<span class="dt">levels=</span><span class="kw">unique</span>(金融機構名稱))) %&gt;%<span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">try3 &lt;-<span class="st"> </span>credit %&gt;%<span class="st"> </span><span class="kw">select</span>(金融機構名稱, 月份, 流通卡數, 有效卡數, 當月發卡數, 當月停卡數) %&gt;%<span class="st"> </span><span class="kw">mutate</span>(金融機構名稱=<span class="kw">factor</span>(金融機構名稱,<span class="dt">levels=</span><span class="kw">unique</span>(金融機構名稱))) %&gt;%<span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(金融機構名稱 !=<span class="st"> &quot;總計&quot;</span>)
 <span class="co"># 挑選出,之前比較的那幾家銀行</span>
 try4 &lt;-<span class="st"> </span>try3 %&gt;%<span class="st"> </span><span class="kw">filter</span>(金融機構名稱 %in%<span class="st"> </span>try2$金融機構名稱)
@@ -565,16 +566,16 @@ try4 &lt;-<span class="st"> </span>try3 %&gt;%<span class="st"> </span><span cla
 <span class="co"># 現行主流畫法</span>
 p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(try3,<span class="kw">aes</span>(<span class="dt">x=</span>月份,<span class="dt">y=</span>流通卡數,<span class="dt">color=</span>金融機構名稱, <span class="dt">group =</span> 金融機構名稱)) +
 <span class="st">  </span><span class="kw">geom_line</span>() 
-p</code></pre>
+p</code></pre></div>
 <p><img src="index_files/figure-html/Line-1.png" title="" alt="" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(try4,<span class="kw">aes</span>(<span class="dt">x=</span>月份,<span class="dt">y=</span>流通卡數,<span class="dt">color=</span>金融機構名稱,<span class="dt">group =</span> 金融機構名稱)) +
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(try4,<span class="kw">aes</span>(<span class="dt">x=</span>月份,<span class="dt">y=</span>流通卡數,<span class="dt">color=</span>金融機構名稱,<span class="dt">group =</span> 金融機構名稱)) +
 <span class="st">  </span><span class="kw">geom_line</span>()
-p</code></pre>
+p</code></pre></div>
 <p><img src="index_files/figure-html/Line-2.png" title="" alt="" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 潮流畫法（簡單板，某些可以！）</span>
-<span class="kw">plot_ly</span>(p)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># 潮流畫法（簡單板，某些可以！）</span>
+<span class="kw">plot_ly</span>(p)</code></pre></div>
 <p><div id="htmlwidget-8318" style="width:672px;height:480px;" class="plotly"></div>
-<script type="application/json" data-for="htmlwidget-8318">{"x":{"data":[{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[2365225,2362729,2365768,2364369,2367995,2376014,2381816,2382773,2371443,2375060,2403451,2280596,2274799,2275626,2275159],"name":"<e5><e5><8c><af><e5><95>平<e9><8a>銵<8c>","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(248,118,109)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[2870159,2884587,2895539,2902172,2908755,2907945,2929905,2926715,2926548,2923208,2923602,2923745,2921708,2921345,2918634],"name":"<e8><e6><97><97>(<e5><e7>)<e5><95>平<e9><8a>銵<8c>","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(196,154,0)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[915317,915888,919137,919343,919693,915711,898152,895162,895126,893692,895696,897462,902155,903886,907443],"name":"<e8><e7><e6><e5><85><95>平<e9><8a>銵<8c>","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(83,180,0)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[1777700,1771951,1770664,1771271,1770774,1777391,1772811,1756151,1759390,1760832,1775563,1789386,1797061,1807333,1815908],"name":"<e8><e9><e5><95>平<e9><8a>銵<8c>","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(0,192,148)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[1452464,1459554,1474541,1481054,1487776,1493439,1482479,1487942,1494199,1499358,1490141,1495432,1500324,1504646,1510258],"name":"<e9><81><e5><9c><9a><95>平<e9><8a>銵<8c>","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(0,182,235)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[2168488,2164353,2167548,2174946,2178171,2184231,2180900,2188742,2194349,2199962,2203939,2209480,2212411,2165121,2169164],"name":"瘞貉<b1><95>平<e9><8a>銵<8c>","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(165,138,255)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[3620273,3556034,3509808,3531899,3497227,3514678,3530779,3556402,3572233,3583601,3564681,3560269,3565954,3575453,3583167],"name":"<e5><e6><e5><9c><9a><95>平<e9><8a>銵<8c>","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(251,97,215)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true}],"layout":{"xaxis":{"tickcolor":"rgb(51,51,51)","gridcolor":"rgb(255,255,255)","showgrid":true,"ticks":"outside","showticklabels":true,"type":"category","title":"<e6><9c>遢","zeroline":false,"showline":false},"yaxis":{"tickcolor":"rgb(51,51,51)","gridcolor":"rgb(255,255,255)","showgrid":true,"ticks":"outside","showticklabels":true,"type":"linear","title":"瘚<e6>","zeroline":false,"showline":false},"plot_bgcolor":"rgb(235,235,235)","margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"bordercolor":"transparent","x":1.01,"y":0.7125,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"family":""},"bgcolor":"rgb(255,255,255)"},"showlegend":false,"titlefont":{"family":""},"paper_bgcolor":"rgb(255,255,255)"}},"evals":[]}</script></p>
+<script type="application/json" data-for="htmlwidget-8318">{"x":{"data":[{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[2365225,2362729,2365768,2364369,2367995,2376014,2381816,2382773,2371443,2375060,2403451,2280596,2274799,2275626,2275159],"name":"台北富邦商業銀行","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(248,118,109)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[2870159,2884587,2895539,2902172,2908755,2907945,2929905,2926715,2926548,2923208,2923602,2923745,2921708,2921345,2918634],"name":"花旗(台灣)商業銀行","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(196,154,0)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[915317,915888,919137,919343,919693,915711,898152,895162,895126,893692,895696,897462,902155,903886,907443],"name":"臺灣新光商業銀行","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(83,180,0)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[1777700,1771951,1770664,1771271,1770774,1777391,1772811,1756151,1759390,1760832,1775563,1789386,1797061,1807333,1815908],"name":"聯邦商業銀行","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(0,192,148)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[1452464,1459554,1474541,1481054,1487776,1493439,1482479,1487942,1494199,1499358,1490141,1495432,1500324,1504646,1510258],"name":"遠東國際商業銀行","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(0,182,235)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[2168488,2164353,2167548,2174946,2178171,2184231,2180900,2188742,2194349,2199962,2203939,2209480,2212411,2165121,2169164],"name":"永豐商業銀行","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(165,138,255)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true},{"x":["10308","10309","10310","10311","10312","10401","10402","10403","10404","10405","10406","10407","10408","10409","10410"],"y":[3620273,3556034,3509808,3531899,3497227,3514678,3530779,3556402,3572233,3583601,3564681,3560269,3565954,3575453,3583167],"name":"台新國際商業銀行","text":[null],"type":"scatter","mode":"lines","line":{"dash":"solid","color":"rgb(251,97,215)","width":5.34505913337863},"xaxis":"x1","yaxis":"y1","showlegend":true}],"layout":{"xaxis":{"tickcolor":"rgb(51,51,51)","gridcolor":"rgb(255,255,255)","showgrid":true,"ticks":"outside","showticklabels":true,"type":"category","title":"月份","zeroline":false,"showline":false},"yaxis":{"tickcolor":"rgb(51,51,51)","gridcolor":"rgb(255,255,255)","showgrid":true,"ticks":"outside","showticklabels":true,"type":"linear","title":"流通卡數","zeroline":false,"showline":false},"plot_bgcolor":"rgb(235,235,235)","margin":{"b":40,"l":60,"t":25,"r":10},"legend":{"bordercolor":"transparent","x":1.01,"y":0.7125,"xref":"paper","yref":"paper","xanchor":"left","yanchor":"top","font":{"family":""},"bgcolor":"rgb(255,255,255)"},"showlegend":false,"titlefont":{"family":""},"paper_bgcolor":"rgb(255,255,255)"}},"evals":[]}</script></p>
 <div id="hw----" class="section level4">
 <h4>[練習&amp;HW] 畫畫看 <code>有效卡數</code> 與 <code>當月發卡數</code></h4>
 <!-- end of list -->
@@ -588,7 +589,7 @@ p</code></pre>
 <h3>再次題列幾項好處</h3>
 <ul>
 <li>製作reproducible的報告、投影片: <code>document</code> 、 <code>slides</code></li>
-<li>想寫數學式子好展現自己的專業 <span class="math">\(e=mc^2\)</span>: <code>mathjax</code></li>
+<li>想寫數學式子好展現自己的專業 <span class="math inline">\(e=mc^2\)</span>: <code>mathjax</code></li>
 <li>只有一份source code，不需要額外複製圖片到報告中: <code>.rmd</code></li>
 <li>增加資料分析演算法的可讀性: <code>code and text</code></li>
 <li>HTML的報告和投影片的格式方便瀏覽: <code>html</code></li>
@@ -605,7 +606,7 @@ p</code></pre>
 <li><p>分段落：兩個斷行</p></li>
 <li><em>斜體</em>： <code>*斜體字*</code>, <strong>粗體</strong>: <code>**粗體字**</code></li>
 <li><code>程式碼</code> 寫在行內： ` `</li>
-<li><p>區段程式碼(chunk code)： <img src="img/chunk_code.png" /></p></li>
+<li><p>區段程式碼(chunk code)： <img src="img/chunk_code.png" alt="" /></p></li>
 </ul>
 </div>
 <div id="overview-with-rsudio" class="section level2">
@@ -613,9 +614,12 @@ p</code></pre>
 <ul>
 <li>YAML Metadata （RStudio範例）</li>
 <li>Markdown （RStudio範例）</li>
-<li>Makrdown Quick Reference<br /></li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf?version=0.99.764&amp;mode=desktop">Markdown Cheatsheet</a><br /></li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?version=0.99.764&amp;mode=desktop">Markdown Reference</a><br /></li>
+<li>Makrdown Quick Reference<br />
+</li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf?version=0.99.764&amp;mode=desktop">Markdown Cheatsheet</a><br />
+</li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?version=0.99.764&amp;mode=desktop">Markdown Reference</a><br />
+</li>
 <li>R Code Chunk</li>
 </ul>
 </div>
@@ -625,12 +629,13 @@ p</code></pre>
 <li>利用 `r` 在markdown中插入R程式</li>
 <li>插入 LaTeX 公式的方法：
 <ul>
-<li>行內<code>$ equation $</code><br /></li>
+<li>行內<code>$ equation $</code><br />
+</li>
 <li>段落 <code>$$ equation $$</code></li>
 </ul></li>
-<li><img src="img/equation.png" /></li>
+<li><img src="img/equation.png" alt="" /></li>
 <li>這是木刻思推出的第 3門課程</li>
-<li>熵指標的公式為 <span class="math">\(-\sum{p_i \log{p_i}}\)</span>，表示系統的亂度</li>
+<li>熵指標的公式為 <span class="math inline">\(-\sum{p_i \log{p_i}}\)</span>，表示系統的亂度</li>
 </ul>
 <div id="-chunk-chunk-option" class="section level4">
 <h4>[練習] chunk &amp; chunk option</h4>
@@ -641,7 +646,7 @@ p</code></pre>
 <li>觀察在 chunk option 多加入 results = ‘asis’ 結果差異？</li>
 <li>觀察 head(cars) 改成 knitr::kable(head(cars))</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre></div>
 <pre><code>##      speed           dist       
 ##  Min.   : 4.0   Min.   :  2.00  
 ##  1st Qu.:12.0   1st Qu.: 26.00  
@@ -649,10 +654,10 @@ p</code></pre>
 ##  Mean   :15.4   Mean   : 42.98  
 ##  3rd Qu.:19.0   3rd Qu.: 56.00  
 ##  Max.   :25.0   Max.   :120.00</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(cars)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(cars)</code></pre></div>
 <p><img src="index_files/figure-html/codeChunkEx1-1.png" title="" alt="" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(cars)</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(cars))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(cars)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(cars))</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -691,16 +696,20 @@ p</code></pre>
 <div id="basic-chunk-options" class="section level4">
 <h4>Basic Chunk Options</h4>
 <ul>
-<li><code>echo</code>(TRUE): whether to include R source code in the output file<br /></li>
-<li><code>eval</code>(TRUE): whether to evaluate the code chunk<br /></li>
-<li><code>message</code>(TRUE): whether to preserve messages emitted by message()<br /></li>
-<li><code>include</code>(TRUE): whether to be written into the output document, but the code is still evaluated and plot files are generated<br /></li>
+<li><code>echo</code>(TRUE): whether to include R source code in the output file<br />
+</li>
+<li><code>eval</code>(TRUE): whether to evaluate the code chunk<br />
+</li>
+<li><code>message</code>(TRUE): whether to preserve messages emitted by message()<br />
+</li>
+<li><code>include</code>(TRUE): whether to be written into the output document, but the code is still evaluated and plot files are generated<br />
+</li>
 <li><code>warning</code>(TRUE): whether to preserve warnings in the output</li>
 <li><code>comment</code>(“##”): set to comment notation</li>
 <li><code>results</code>(‘hide’,‘asis’): hide output ; asis treats the output of your R code as literal Markdown (when using like kable function)</li>
 </ul>
 <p>Set global chunk options at code chunks header:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr::opts_chunk$<span class="kw">set</span>(<span class="dt">comment=</span><span class="st">&quot;&quot;</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, <span class="dt">fig.width=</span><span class="dv">12</span>, <span class="dt">fig.height=</span><span class="fl">8.5</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::opts_chunk$<span class="kw">set</span>(<span class="dt">comment=</span><span class="st">&quot;&quot;</span>, <span class="dt">message=</span><span class="ot">FALSE</span>, <span class="dt">warning=</span><span class="ot">FALSE</span>, <span class="dt">fig.width=</span><span class="dv">12</span>, <span class="dt">fig.height=</span><span class="fl">8.5</span>)
 <span class="kw">library</span>(datasets)
 <span class="kw">library</span>(dplyr)
 <span class="kw">library</span>(ggplot2)
@@ -708,7 +717,7 @@ p</code></pre>
 <span class="kw">library</span>(reshape2)
 <span class="kw">library</span>(rmarkdown)
 <span class="kw">library</span>(knitr)
-<span class="kw">library</span>(plotly)</code></pre>
+<span class="kw">library</span>(plotly)</code></pre></div>
 </div>
 </div>
 <div id="rendering" class="section level2">
@@ -717,14 +726,14 @@ p</code></pre>
 <li>RStudio: “Knit” command (Ctrl+Shift+K)</li>
 <li>Command line: rmarkdown::render function</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">rmarkdown::<span class="kw">render</span>(<span class="st">&quot;index.Rmd&quot;</span>)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rmarkdown::<span class="kw">render</span>(<span class="st">&quot;index.Rmd&quot;</span>)</code></pre></div>
 <div id="hw-" class="section level4">
 <h4>[練習&amp;HW] 各種輸出</h4>
 <ul>
-<li>輸出圖片 <img src="https://bank.sinopac.com/bsp/images/logo_bsp.gif" /></li>
+<li>輸出圖片 <img src="https://bank.sinopac.com/bsp/images/logo_bsp.gif" alt="" /></li>
 <li>試著畫出之前的長條圖與線圖</li>
-<li>HINT: <img src="img/BarChart.png" /></li>
-<li>HINT: <img src="img/LineChart.png" /></li>
+<li>HINT: <img src="img/BarChart.png" alt="" /></li>
+<li>HINT: <img src="img/LineChart.png" alt="" /></li>
 </ul>
 </div>
 <div id="reference" class="section level3">
